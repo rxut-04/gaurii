@@ -30,4 +30,32 @@ if (hasError) {
   process.exit(1);
 }
 
+// Ensure 'build' directory also exists and is populated
+// so Netlify succeeds whether publish is '.' or 'build'
+const buildDir = path.join(__dirname, 'build');
+if (!fs.existsSync(buildDir)) {
+  fs.mkdirSync(buildDir, { recursive: true });
+}
+
+const itemsToCopy = [
+  'index.html',
+  'original.html',
+  'resume.html',
+  'Gsap X Webflow.html',
+  'Gsap X Webflow_files',
+  'Project Images',
+  'assets',
+  'scratch',
+  '_redirects'
+];
+
+for (const item of itemsToCopy) {
+  const src = path.join(__dirname, item);
+  const dest = path.join(buildDir, item);
+  if (fs.existsSync(src)) {
+    fs.cpSync(src, dest, { recursive: true });
+  }
+}
+console.log('✓ Populated build/ directory for Netlify fallback');
+
 console.log('Build completed successfully. All entrypoints and assets verified!');
