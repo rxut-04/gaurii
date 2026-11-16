@@ -1,0 +1,19 @@
+{
+  "name": "dynamic-portfolio-website",
+  "version": "1.0.0",
+  "description": "Dynamic Full Stack Developer Portfolio & GSAP Showcase",
+  "main": "index.html",
+  "scripts": {
+    "build": "node build.js",
+    "start": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "portfolio",
+    "gsap",
+    "interactive",
+    "webflow",
+    "showcase"
+  ],
+  "author": "",
+  "license": "ISC"
+}
